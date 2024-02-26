@@ -7,6 +7,7 @@
         <table border=1>
             <thead>
                 <tr>
+                    <th>책id</th>
                     <th>책이름</th>
                     <th>출판사</th>
                     <th>가격</th>
@@ -15,6 +16,7 @@
             <tbody>
                 {% for i in book_list %}
                 <tr>
+                    <td>{{ i[0] }}</td>
                     <td><a href='/view?id={{i[0]}}'>  {{ i[1] }} </a> </td>
                     <td>{{ i[2] }}</td>
                     <td>{{ i[3] }}</td>

@@ -10,11 +10,18 @@ cur = db.cursor()
 
 @app.route('/')
 def index():
-    sqlString = 'select * from Book;'
+    sqlString = 'select * from Book'
     res = cur.execute(sqlString)
     print("res = ", res)
     book_list = cur.fetchall()
-    return render_template('booklist.html', pbook_list=book_list)
+    return render_template('booklist.html', book_list=book_list)
+
+@app.route("/view")
+def getBookInfo():
+    id = request.args.get('id')
+    sqlString = "select * from Book where bookid = '" + id + "'"
+    res = cur.execute(sqlString)
+    
 
 if __name__ == "__main__":
     app.run('0.0.0.0')
