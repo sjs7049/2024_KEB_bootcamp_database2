@@ -20,8 +20,9 @@ def index():
 def getBookInfo():
     id = request.args.get('id')
     sqlString = "select * from Book where bookid = '" + id + "'"
-    res = cur.execute(sqlString)
-    
+    cur.execute(sqlString)
+    book = cur.fetchall()
+    return render_template('bookview.html', book=book)
 
 if __name__ == "__main__":
     app.run('0.0.0.0')
